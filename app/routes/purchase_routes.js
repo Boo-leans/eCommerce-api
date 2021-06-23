@@ -40,4 +40,19 @@ router.delete('/purchases/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// Update Route for the product purchase
+router.patch('/purchases/:id', requireToken, (req, res, next) => {
+  delete req.body.purchase.owner
+  const id = req.params.id
+  const purchaseData = req.body.purchase
+  Purchase.findById(id)
+    .then(handle404)
+    .then(purchase => {
+      requireOwnership(req, purchase)
+      return purchase.updateOne(purchaseData)
+    })
+    .then(() => { res.sendStatus(204) })
+    .catch(next)
+})
+
 module.exports = router
