@@ -19,3 +19,15 @@ router.get('/purchases', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(200))
     .catch(next)
 })
+
+// Create Route for the product purchse
+router.post('/purchases', requireToken, (req, res, next) => {
+  req.body.purchase.owner = req.user.id
+
+  Purchase.create(req.body.purchase)
+    // .then(handle404)
+    .then(purchase => res.status(201).json({ purchase }))
+    .catch(next)
+})
+
+module.exports = router
