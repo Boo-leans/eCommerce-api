@@ -10,7 +10,7 @@ const userRoutes = require('./app/routes/user_routes')
 const errorHandler = require('./lib/error_handler')
 const requestLogger = require('./lib/request_logger')
 
-// const purchaseRoutes = require('./app/routes/purchase_routes')
+const purchaseRoutes = require('./app/routes/purchase_routes')
 const shoppingCartRoutes = require('./app/routes/shoppingCart_routes')
 
 // require database configuration logic
@@ -59,7 +59,7 @@ app.use(requestLogger)
 
 // register route files
 app.use(userRoutes)
-// app.use(purchaseRoutes)
+app.use(purchaseRoutes)
 app.use(shoppingCartRoutes)
 
 // register error handling middleware

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const shoppingCartSchema = new mongoose.Schema({
   item: {
-    type: Array,
+    type: String,
     required: true
   },
   owner: {
@@ -14,4 +14,4 @@ const shoppingCartSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Purchase', shoppingCartSchema)
+module.exports = mongoose.model('ShoppingCart', shoppingCartSchema)
