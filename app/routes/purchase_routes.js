@@ -15,8 +15,7 @@ router.get('/purchases', requireToken, (req, res, next) => {
   Purchase.find()
     .then(handle404)
     .then(purchase => requireOwnership(req, purchase))
-    .then(purchase => res.json(purchase))
-    .then(() => res.sendStatus(200))
+    .then(purchase => res.status(201).json(purchase))
     .catch(next)
 })
 
