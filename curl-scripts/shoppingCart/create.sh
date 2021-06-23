@@ -9,6 +9,7 @@ curl "${API}${URL_PATH}" \
   --data '{
     "shoppingCart": {
       "item": "'"${ITEM}"'"
+      }
     }'
 
 echo
