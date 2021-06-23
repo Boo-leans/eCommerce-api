@@ -11,6 +11,8 @@ const userRoutes = require('./app/routes/user_routes')
 const errorHandler = require('./lib/error_handler')
 const requestLogger = require('./lib/request_logger')
 
+const purchaseRoutes = require('./app/routes/purchase_routes')
+
 // require database configuration logic
 // `db` will be the actual Mongo URI as a string
 const db = require('./config/db')
@@ -44,6 +46,7 @@ const port = process.env.PORT || serverDevPort
 
 // register passport authentication middleware
 app.use(auth)
+app.use(purchaseRoutes)
 
 // add `express.json` middleware which will parse JSON requests into
 // JS objects before they reach the route files.

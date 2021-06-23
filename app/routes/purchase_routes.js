@@ -25,8 +25,8 @@ router.post('/purchases', requireToken, (req, res, next) => {
   req.body.purchase.owner = req.user.id
 
   Purchase.create(req.body.purchase)
-    // .then(handle404)
-    .then(purchase => res.status(201).json({ purchase }))
+    .then(handle404)
+    .then(purchase => res.status(200).json({ purchase }))
     .catch(next)
 })
 
