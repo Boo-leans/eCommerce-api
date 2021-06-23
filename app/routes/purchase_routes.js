@@ -29,4 +29,15 @@ router.post('/purchases', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.delete('/purchases/:id', requireToken, (req, res, next) => {
+  Purchase.findById(req.params.id)
+    .then(handle404)
+    .then(purchase => {
+      requireOwnership(req, purchase)
+      purchase.deleteOne()
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
+
 module.exports = router
