@@ -2,7 +2,7 @@ const express = require('express')
 
 const passport = require('passport')
 
-const ShoppingCart = require('../models/shoppingCart.js')
+const ShoppingCart = require('../models/cart.js')
 
 const { handle404, requireOwnership } = require('../../lib/custom_errors')
 
@@ -14,15 +14,13 @@ const router = express.Router()
 router.get('/shoppingCart', requireToken, (req, res, next) => {
   ShoppingCart.find()
     .then(handle404)
-    .then(shoppingCart => {
-      return shoppingCart.map(item => item.toObject())
-    })
+    .then(shoppingCart => requireOwnership(req, shoppingCart))
     .then(shoppingCart => res.status(201).json(shoppingCart))
     .catch(next)
 })
 
 // Create Route for the product purchse
-router.post('/shoppingCart', requireToken, (req, res, next) => {
+router.post('/shopping_cart', requireToken, (req, res, next) => {
   req.body.shoppingCart.owner = req.user.id
 
   ShoppingCart.create(req.body.shoppingCart)
