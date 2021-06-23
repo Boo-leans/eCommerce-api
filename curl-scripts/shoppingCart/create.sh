@@ -10,3 +10,5 @@ curl "${API}${URL_PATH}" \
     "shoppingCart": {
       "item": "'"${ITEM}"'"
     }'
+
+echo
