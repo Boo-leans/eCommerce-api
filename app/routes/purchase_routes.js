@@ -23,10 +23,6 @@ router.get('/purchases', requireToken, (req, res, next) => {
 
 // Create Route for the product purchse
 router.post('/purchases', requireToken, (req, res, next) => {
-  // console.log(req.body.purchase.item[0])
-  // console.log(req.body.purchase.item[1])
-  // console.log(req.body.purchase.item[2])
-  // console.log(req.body.purchase.item[3]
   Purchase.create(req.body.purchase)
     .then(handle404)
     .then(purchase => res.status(200).json({ purchase }))
