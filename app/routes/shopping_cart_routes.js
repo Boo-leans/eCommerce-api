@@ -20,7 +20,7 @@ router.get('/shoppingCart', requireToken, (req, res, next) => {
 })
 
 // Create Route for the product purchse
-router.post('/shopping_cart', requireToken, (req, res, next) => {
+router.post('/shoppingCart', requireToken, (req, res, next) => {
   req.body.shoppingCart.owner = req.user.id
 
   ShoppingCart.create(req.body.shoppingCart)

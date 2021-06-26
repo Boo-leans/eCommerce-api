@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const purchaseSchema = new mongoose.Schema({
+  // update item to items plural
   item: {
     type: Array,
     required: true
