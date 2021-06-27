@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+// Model of how data will be stored once an item is purchased.
 const purchaseSchema = new mongoose.Schema({
   // update item to items plural
   item: {
