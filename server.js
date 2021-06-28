@@ -4,12 +4,14 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
 const requestLogger = require('./lib/request_logger')
+
+const purchaseRoutes = require('./app/routes/purchase_routes')
+const shoppingCartRoutes = require('./app/routes/shoppingCart_routes')
 
 // require database configuration logic
 // `db` will be the actual Mongo URI as a string
@@ -56,8 +58,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(exampleRoutes)
 app.use(userRoutes)
+app.use(purchaseRoutes)
+app.use(shoppingCartRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
