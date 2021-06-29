@@ -64,8 +64,8 @@ for your time and attention!
 ![Wireframes](https://github.com/Boo-leans/eCommerce-api/blob/main/WireFrame.png)
 
 ## Catalog of routes that the API expects
-// add/Update purchase history
 ```javascript
+// add/Update purchase history
 export const productCreate = (user, item) => {
   return axios({
     method: 'POST',
