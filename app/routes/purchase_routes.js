@@ -12,8 +12,9 @@ const router = express.Router()
 
 // Index Route for the product purchase history
 router.get('/purchases', requireToken, (req, res, next) => {
-  Purchase.find()
+  Purchase.find({owner: req.user.id})
     .then(handle404)
+    // .then(purchase => requireOwnership(req, purchase))
     .then(purchase => {
       return purchase.map(item => item.toObject())
     })
